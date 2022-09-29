@@ -6,7 +6,29 @@
 #include <iostream>
 using namespace std;
 
+int fibonacci_number(int n, int& k) {
+	if (n == 0) return 0;
+
+	int number = 1;
+	int prev_number = 0;
+	for (int i = 1; i < n; ++i) {
+		int temp = number;
+		number += prev_number;
+		++k;
+		prev_number = temp;
+	}
+
+
+	return number;
+}
+
+
 int main() {
-	cout << "!!!Hello World!!!" << endl;
+	int n;
+	cin >> n;
+	int k = 0;
+
+	cout << n << " число последовательности Фибоначчи: " << fibonacci_number(n, k) << endl;
+	cout << "Количество операций: " << k << endl;
 	return 0;
 }
