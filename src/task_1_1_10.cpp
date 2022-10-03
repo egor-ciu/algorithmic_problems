@@ -1,14 +1,6 @@
-/*
- * 1.1.10. Та же задача, если требуется, чтобы число операций было
-					 пропорционально log n. (Переменные должны быть целочисленными.)
-					 [Указание. Пара соседних чисел Фибоначчи получается из предыдущей умножением на матрицу
-					 1 1
-					 1 0
-					 — так что задача сводится к возведению матрицы в степень n. Это можно сделать за C log n действий тем же способом, что и для чисел.]
- */
-
 #include <iostream>
-#include <ctime>
+#include "task_1_1_9.h"
+
 using namespace std;
 
 void pow_matrix(uint64_t* matrix, uint64_t n) {
@@ -46,7 +38,7 @@ void pow_matrix(uint64_t* matrix, uint64_t n) {
 
 }
 
-int fast_fibonacci_number(uint64_t n) {
+uint64_t fast_fibonacci_number(uint64_t n) {
 	if (n == 0) return 0;
 	if (n == 1) return 1;
 
@@ -64,28 +56,10 @@ int fast_fibonacci_number(uint64_t n) {
 
 }
 
-
-int fibonacci_number(uint64_t n, uint64_t& k) {
-	if (n == 0) return 0;
-
-	uint64_t number = 1;
-	uint64_t prev_number = 0;
-	for (uint64_t i = 1; i < n; ++i) {
-		uint64_t temp = number;
-		number += prev_number;
-		++k;
-		prev_number = temp;
-	}
-
-
-	return number;
-}
-
-
-int main() {
+void run_task_1_1_10() {
 	uint64_t n;
 	cin >> n;
-	uint64_t k = 0;
+	int k = 0;
 
 	unsigned int start_2 = clock();
 	uint64_t result_2 = fast_fibonacci_number(n);
@@ -98,7 +72,7 @@ int main() {
 	unsigned int end_1 = clock();
 	cout << n << " число последовательности Фибоначчи (медленно): " << result_1 << endl;
 	cout << "Время: " << end_1 - start_1 << endl;
-
-
-	return 0;
 }
+
+
+
